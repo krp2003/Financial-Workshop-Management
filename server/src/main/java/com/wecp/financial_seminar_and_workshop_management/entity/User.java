@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Entity
 @Table(name = "users") // do not change table name
 public class User {
     @Id
@@ -17,30 +18,22 @@ public class User {
 
     private String username;
     private String password;
+
+    @Column(unique = true)
     private String email;
-    private String role; // INSTITUTION, PROFESSIONAL, PARTICIPANT
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Enrollment> enrollments = new HashSet<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Feedback> feedbacks = new HashSet<>();
+    private String role;
 
     @ManyToMany(mappedBy = "professionals")
     private List<Event> events = new ArrayList<>();
 
-    public User() {
-    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Enrollment> enrollments = new ArrayList<>();
 
-    public User(String username, String password, String email, String role, Set<Enrollment> enrollments,
-            Set<Feedback> feedbacks, List<Event> events) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-        this.enrollments = enrollments;
-        this.feedbacks = feedbacks;
-        this.events = events;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks = new ArrayList<>();
+
+    public User() {
     }
 
     public Long getId() {
@@ -83,22 +76,6 @@ public class User {
         this.role = role;
     }
 
-    public Set<Enrollment> getEnrollments() {
-        return enrollments;
-    }
-
-    public void setEnrollments(Set<Enrollment> enrollments) {
-        this.enrollments = enrollments;
-    }
-
-    public Set<Feedback> getFeedbacks() {
-        return feedbacks;
-    }
-
-    public void setFeedbacks(Set<Feedback> feedbacks) {
-        this.feedbacks = feedbacks;
-    }
-
     public List<Event> getEvents() {
         return events;
     }
@@ -107,4 +84,19 @@ public class User {
         this.events = events;
     }
 
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+
+    public List<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(List<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
 }
