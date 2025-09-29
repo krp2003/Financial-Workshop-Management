@@ -1,1 +1,40 @@
-//doto: complete missing code..
+
+<div class="card">
+  <h2>Add Resource</h2>
+  <form [formGroup]="itemForm" (ngSubmit)="submit()">
+    <label>Event</label>
+    <select formControlName="eventId">
+      <option value="">Select Event</option>
+      <option *ngFor="let e of events" [value]="e.id">{{ e.title }}</option>
+    </select>
+    <div *ngIf="itemForm.controls['eventId'].invalid && itemForm.controls['eventId'].touched" class="error">
+      Event is required
+    </div>
+ 
+    <label>Type</label>
+    <input formControlName="type" placeholder="Resource Type" />
+    <div *ngIf="itemForm.controls['type'].invalid && itemForm.controls['type'].touched" class="error">
+      Type is required
+    </div>
+ 
+    <label>Description</label>
+    <textarea formControlName="description" placeholder="Resource Description"></textarea>
+    <div *ngIf="itemForm.controls['description'].invalid && itemForm.controls['description'].touched" class="error">
+      Description is required
+    </div>
+ 
+    <label>Availability</label>
+    <select formControlName="availabilityStatus">
+      <option value="">Select Status</option>
+      <option value="Available">Available</option>
+      <option value="Unavailable">Unavailable</option>
+    </select>
+    <div *ngIf="itemForm.controls['availabilityStatus'].invalid && itemForm.controls['availabilityStatus'].touched" class="error">
+      Status is required
+    </div>
+ 
+    <button type="submit" [disabled]="itemForm.invalid">Add Resource</button>
+    <div class="success">{{ successMessage }}</div>
+    <div class="error">{{ errorMessage }}</div>
+  </form>
+</div>

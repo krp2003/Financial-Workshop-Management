@@ -1,1 +1,9 @@
-//doto: complete missing code..
+<form [formGroup]="itemForm" (ngSubmit)="submit()">
+  <label>Event ID</label>
+  <input formControlName="eventId" type="number" />
+ 
+  <label>User ID</label>
+  <input formControlName="userId" type="number" />
+ 
+  <button type="submit" [disabled]="!itemForm.valid">Assign Professional</button>
+</form>

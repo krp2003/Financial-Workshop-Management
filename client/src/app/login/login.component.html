@@ -1,1 +1,14 @@
-//doto: complete missing code..
+ 
+<div class="card">
+  <h2>Login</h2>
+  <form [formGroup]="itemForm" (ngSubmit)="login()">
+    <label>Username</label>
+    <input formControlName="username" placeholder="Enter username" />
+ 
+    <label>Password</label>
+    <input type="password" formControlName="password" placeholder="Enter password" />
+ 
+    <button type="submit" [disabled]="itemForm.invalid">Login</button>
+    <div class="error">{{ errorMessage }}</div>
+  </form>
+</div>

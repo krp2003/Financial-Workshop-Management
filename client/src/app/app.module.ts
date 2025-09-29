@@ -19,6 +19,9 @@ import { AssignProfessionalComponent } from './assign-professional/assign-profes
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 
+import {HTTP_INTERCEPTORS} from '@angular/common/http'
+import { AuthInterceptor } from '../services/AuthInterceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,7 @@ import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
     ReactiveFormsModule,
     HttpClientModule 
   ],
-  providers: [HttpService,HttpClientModule ],
+  providers: [HttpService,HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

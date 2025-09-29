@@ -1,1 +1,28 @@
-//doto: complete missing code..
+<div class="card">
+  <h2>Create Event</h2>
+  <form [formGroup]="itemForm" (ngSubmit)="submit()">
+    <label>Title</label>
+    <input formControlName="title" placeholder="Event Title" />
+ 
+    <label>Schedule</label>
+    <input type="date" formControlName="schedule" />
+ 
+    <label>Location</label>
+    <input formControlName="location" placeholder="Location" />
+ 
+    <label>Status</label>
+    <select formControlName="status">
+      <option value="">Select Status</option>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+ 
+    <label>Description</label>
+    <textarea formControlName="description" placeholder="Event Description"></textarea>
+ 
+    <button type="submit" [disabled]="itemForm.invalid">Create Event</button>
+    <div class="success">{{ successMessage }}</div>
+    <div class="error">{{ errorMessage }}</div>
+  </form>
+</div>
+ 

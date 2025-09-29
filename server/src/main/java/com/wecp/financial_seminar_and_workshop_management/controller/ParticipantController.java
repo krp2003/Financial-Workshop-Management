@@ -14,27 +14,43 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+@RestController
+@RequestMapping("/api/participant")
 public class ParticipantController {
-
-
-
-    @GetMapping("/api/participant/events")
+ 
+    @Autowired
+    EventService eventService;
+ 
+    @Autowired
+    EnrollmentService enrollmentService;
+ 
+    @Autowired
+    FeedbackService feedbackService;
+ 
+    // Get all events
+    @GetMapping("/events")
     public ResponseEntity<List<Event>> getEvents() {
-        // Get all events
+        return ResponseEntity.ok(eventService.getAllEvents());
     }
-
-    @PostMapping("/api/participant/event/{eventId}/enroll")
+ 
+    // Enroll in event
+    @PostMapping("/event/{eventId}/enroll")
     public ResponseEntity<Enrollment> enrollInEvent(@RequestParam Long userId, @PathVariable Long eventId) {
-     // Enroll in event
+        return ResponseEntity.ok(enrollmentService.enroll(userId, eventId));
     }
-
-    @GetMapping("/api/participant/event/{id}/status")
+ 
+    // View event status
+    @GetMapping("/event/{id}/status")
     public ResponseEntity<Event> viewEventStatus(@PathVariable Long id) {
-        // view event by event id
+        return ResponseEntity.ok(eventService.getEvent(id).orElseThrow());
     }
-
-    @PostMapping("/api/participant/event/{eventId}/feedback")
-    public ResponseEntity<Feedback> provideFeedback(@RequestParam Long userId, @PathVariable Long eventId, @RequestBody Feedback feedback) {
-        // Provide feedback for event
+ 
+    // Provide feedback
+    @PostMapping("/event/{eventId}/feedback")
+    public ResponseEntity<Feedback> provideFeedback(@RequestParam Long userId,
+                                                    @PathVariable Long eventId,
+                                                    @RequestBody Feedback feedback) {
+        return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
     }
 }
+ 

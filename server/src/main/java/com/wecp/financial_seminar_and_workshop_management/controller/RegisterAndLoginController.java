@@ -19,18 +19,43 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 
+ 
+@RestController
 public class RegisterAndLoginController {
-
-
-    @PostMapping("/api/user/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        // register user
-    }
-
-    @PostMapping("/api/user/login")
-    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
-        // login user
-        // return JWT token in LoginResponse object
-        // if login fails, return 401 Unauthorized http status
-    }
+ 
+   
+       @Autowired
+       private UserService userService;
+    
+       @Autowired
+       private JwtUtil jwtUtil;
+    
+       @Autowired
+       private AuthenticationManager authenticationManager;
+    
+       // Register User
+       @PostMapping("/api/user/register")
+       public ResponseEntity<User> registerUser(@RequestBody User user) {
+           return new ResponseEntity<>(userService.registerUser(user), HttpStatus.OK);
+       }
+    
+       // Login User
+       @PostMapping("/api/user/login")
+       public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
+           try {
+               authenticationManager.authenticate(
+                       new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+               );
+           } catch (AuthenticationException e) {
+               throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
+           }
+    
+           UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
+           String token = jwtUtil.generateToken(userDetails.getUsername());
+           User user = userService.getUserByUsername(loginRequest.getUsername());
+           LoginResponse loginResponse = new LoginResponse(user.getId(),token,user.getUsername(), user.getEmail(), user.getRole());
+           return new ResponseEntity<>(loginResponse, HttpStatus.OK);
+       }
 }
+ 
+

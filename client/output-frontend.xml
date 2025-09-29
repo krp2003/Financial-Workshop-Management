@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome Headless 112.0.5614.0 (Linux x86_64)" package="" timestamp="2025-09-29T09:29:21" id="0" hostname="ip-172-31-38-10" tests="26" errors="0" failures="3" time="0.218">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/112.0.5614.0 Safari/537.36"/>
+  </properties>
+  <testcase name="AddResourceComponent should create the form with initial empty values and required validators" time="0.066" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).AddResourceComponent">
+    <failure type="">Expected null to be undefined.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/add-resource.component.spec.ts:44:29)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected null to be undefined.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/add-resource.component.spec.ts:45:36)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+  </testcase>
+  <testcase name="AddResourceComponent should mark the form as valid when all required fields are filled" time="0.014" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).AddResourceComponent"/>
+  <testcase name="AssignProfessionalComponent should create the form with initial empty values and required validators" time="0.01" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).AssignProfessionalComponent"/>
+  <testcase name="AssignProfessionalComponent should mark the form as valid when all required fields are filled" time="0.006" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).AssignProfessionalComponent"/>
+  <testcase name="CreateEventComponent should create the form with initial empty values and required validators" time="0.016" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).CreateEventComponent">
+    <failure type="">Expected [ Function ] to be undefined.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:45:30)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected [ Function ] to be undefined.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:46:33)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected [ Function ] to be undefined.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:47:33)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected [ Function ] to be undefined.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:49:36)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected false to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:52:71)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected false to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:53:74)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected false to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:54:74)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+    <failure type="">Expected false to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:56:77)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+  </testcase>
+  <testcase name="CreateEventComponent should mark the form as valid when all required fields are filled" time="0.009" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).CreateEventComponent">
+    <failure type="">Expected false to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/tests/create-event.component.spec.ts:66:38)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:26)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:52)
+</failure>
+  </testcase>
+  <testcase name="HttpService should be created" time="0.003" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should fetch events by professional" time="0.006" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should fetch events by institution ID" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should fetch all professionals" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should fetch all events" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should view all events" time="0.004" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should view event status" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should enroll participant" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should create event" time="0.003" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should update event" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should add resource" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should assign professionals" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should update event status" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="HttpService should add feedback" time="0.002" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).HttpService"/>
+  <testcase name="LoginComponent should have invalid form if username and password are empty" time="0.011" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).LoginComponent"/>
+  <testcase name="LoginComponent should have invalid form if username or password is empty" time="0.012" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).LoginComponent"/>
+  <testcase name="LoginComponent should have valid form if username and password are provided" time="0.006" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).LoginComponent"/>
+  <testcase name="RegistrationComponent should have invalid form if any field is empty" time="0.016" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).RegistrationComponent"/>
+  <testcase name="RegistrationComponent should have invalid form if email is invalid" time="0.008" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).RegistrationComponent"/>
+  <testcase name="RegistrationComponent should have valid form if all fields are filled correctly" time="0.008" classname="Chrome_Headless_112_0_5614_0_(Linux_x86_64).RegistrationComponent"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

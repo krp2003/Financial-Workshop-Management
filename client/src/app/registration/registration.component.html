@@ -1,1 +1,26 @@
-//doto: complete missing code..
+<div class="card">
+  <h2>Register</h2>
+  <form [formGroup]="itemForm" (ngSubmit)="register()">
+    <label>Email</label>
+    <input formControlName="email" placeholder="Enter email" />
+ 
+    <label>Username</label>
+    <input formControlName="username" placeholder="Enter username" />
+ 
+    <label>Password</label>
+    <input type="password" formControlName="password" placeholder="Enter password" />
+ 
+    <label>Role</label>
+    <select formControlName="role">
+      <option value="">Select Role</option>
+      <option value="user">User</option>
+      <option value="professional">Professional</option>
+      <option value="institution">Institution</option>
+    </select>
+ 
+    <button type="submit" [disabled]="itemForm.invalid">Register</button>
+    <div class="success">{{ successMessage }}</div>
+    <div class="error">{{ errorMessage }}</div>
+  </form>
+</div>
+ 
