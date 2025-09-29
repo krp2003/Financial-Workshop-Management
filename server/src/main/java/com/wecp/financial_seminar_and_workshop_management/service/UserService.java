@@ -13,7 +13,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+<<<<<<< Updated upstream
 public class UserService  {
 
     // implement service methods here
 }
+=======
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public User registerUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public User loginUser(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password).orElse(null);
+    }
+
+    public List<User> getProfessionals() {
+        return userRepository.findByRole("PROFESSIONAL");
+    }
+}
+>>>>>>> Stashed changes
