@@ -23,39 +23,32 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class RegisterAndLoginController {
  
-   
-       @Autowired
-       private UserService userService;
-    
-       @Autowired
-       private JwtUtil jwtUtil;
-    
-       @Autowired
-       private AuthenticationManager authenticationManager;
-    
-       // Register User
-       @PostMapping("/api/user/register")
-       public ResponseEntity<User> registerUser(@RequestBody User user) {
-           return new ResponseEntity<>(userService.registerUser(user), HttpStatus.OK);
-       }
-    
-       // Login User
-       @PostMapping("/api/user/login")
-       public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
-           try {
-               authenticationManager.authenticate(
-                       new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
-               );
-           } catch (AuthenticationException e) {
-               throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
-           }
-    
-           UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
-           String token = jwtUtil.generateToken(userDetails.getUsername());
-           User user = userService.getUserByUsername(loginRequest.getUsername());
-           LoginResponse loginResponse = new LoginResponse(user.getId(),token,user.getUsername(), user.getEmail(), user.getRole());
-           return new ResponseEntity<>(loginResponse, HttpStatus.OK);
-       }
+     @Autowired
+     private UserService userService;
+  
+     @Autowired
+     private AuthenticationManager authenticationManager;
+  
+     @PostMapping("/register")
+     public ResponseEntity<User> registerUser(@RequestBody User user) {
+         User savedUser = userService.registerUser(user);
+         return ResponseEntity.ok(savedUser);
+     }
+  
+     @PostMapping("/login")
+     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+         try {
+             authenticationManager.authenticate(
+                     new UsernamePasswordAuthenticationToken(
+                             loginRequest.getUsername(), loginRequest.getPassword()
+                     )
+             );
+             LoginResponse response = userService.login(loginRequest);
+             return ResponseEntity.ok(response);
+         } catch (AuthenticationException e) {
+             return ResponseEntity.status(401).build();
+         }
+     }
 }
  
 

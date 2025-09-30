@@ -13,18 +13,33 @@ import java.util.List;
 
 @Service
 public class EnrollmentService {
-        @Autowired
-        private EnrollmentRepository enrollmentRepository;
-        @Autowired
-        private UserRepository userRepository;
-        @Autowired
-        private EventRepository eventRepository;
+       @Autowired
+          private EnrollmentRepository enrollmentRepository;
+       
+          @Autowired
+          private EventRepository eventRepository;
+       
+          @Autowired
+          private UserRepository userRepository;
+       
+          public Enrollment enrollInEvent(Long eventId, Long userId) {
+              Event event = eventRepository.findById(eventId).orElseThrow();
+              User user = userRepository.findById(userId).orElseThrow();
+              Enrollment enrollment = new Enrollment();
+              enrollment.setEvent(event);
+              enrollment.setUser(user);
+              return enrollmentRepository.save(enrollment);
+          }
 
-        public Enrollment enroll(Long userId, Long eventId) {
-                User user = userRepository.findById(userId).orElseThrow();
-                Event event = eventRepository.findById(eventId).orElseThrow();
-                Enrollment enrollment = new Enrollment(user, event, "PENDING");
-                return enrollmentRepository.save(enrollment);
-            }
+           public Enrollment enrollUser(Long eventId, Long userId) {
+                  Event event = eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException("Event not found"));
+                  User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+           
+                  Enrollment enrollment = new Enrollment();
+                  enrollment.setEvent(event);
+                  enrollment.setUser(user);
+           
+                  return enrollmentRepository.save(enrollment);
+              }
 
 }

@@ -19,21 +19,20 @@ import org.springframework.stereotype.Service;
 public class FeedbackService {
 
      @Autowired
-        private FeedbackRepository feedbackRepository;
-     
-        @Autowired
-        private UserRepository userRepository;
-     
-        @Autowired
-        private EventRepository eventRepository;
-
-        public Feedback addFeedback(Long userId, Long eventId, Feedback feedback) {
-                Event event = eventRepository.findById(eventId).orElseThrow();
-                User user = userRepository.findById(userId).orElseThrow();
-                feedback.setEvent(event);
-                feedback.setUser(user);
-                feedback.setTimestamp(new Date());
-                return feedbackRepository.save(feedback);
-            }
+       private FeedbackRepository feedbackRepository;
+    
+       @Autowired
+       private EventRepository eventRepository;
+    
+       @Autowired
+       private UserRepository userRepository;
+    
+       public Feedback addFeedback(Long eventId, Long userId, Feedback feedback) {
+           Event event = eventRepository.findById(eventId).orElseThrow();
+           User user = userRepository.findById(userId).orElseThrow();
+           feedback.setEvent(event);
+           feedback.setUser(user);
+           return feedbackRepository.save(feedback);
+       }
 
 }

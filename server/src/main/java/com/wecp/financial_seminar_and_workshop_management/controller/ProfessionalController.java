@@ -8,39 +8,34 @@ import com.wecp.financial_seminar_and_workshop_management.service.EventService;
 import com.wecp.financial_seminar_and_workshop_management.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+ 
 @RestController
 @RequestMapping("/api/professional")
+@PreAuthorize("hasAuthority('PROFESSIONAL')")
 public class ProfessionalController {
  
     @Autowired
-    EventService eventService;
+    private EventService eventService;
  
     @Autowired
-    FeedbackService feedbackService;
+    private FeedbackService feedbackService;
  
-    // View assigned events
     @GetMapping("/events")
-    public ResponseEntity<List<Event>> viewAssignedEvents(@RequestParam Long userId) {
-        return ResponseEntity.ok(eventService.getEventsByProfessional(userId));
+    public ResponseEntity<List<Event>> getAssignedEvents(@RequestParam Long userId) {
+        List<Event> events = eventService.getEventsForProfessional(userId);
+        return ResponseEntity.ok(events);
     }
  
-    // Update event status
-    @PutMapping("/event/{id}/status")
-    public ResponseEntity<Event> updateEventStatus(@PathVariable Long id, @RequestParam String status) {
-        return ResponseEntity.ok(eventService.updateEventStatus(id, status));
-    }
- 
-    // Provide feedback
     @PostMapping("/event/{eventId}/feedback")
-    public ResponseEntity<Feedback> provideFeedback(@PathVariable Long eventId,
-                                                    @RequestParam Long userId,
-                                                    @RequestBody Feedback feedback) {
-        return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
+    public ResponseEntity<Void> provideFeedback(@PathVariable Long eventId,
+                                                @RequestParam Long userId,
+                                                @RequestBody Feedback feedback) {
+        feedbackService.addFeedback(eventId, userId, feedback);
+        return ResponseEntity.ok().build();
     }
 }
- 

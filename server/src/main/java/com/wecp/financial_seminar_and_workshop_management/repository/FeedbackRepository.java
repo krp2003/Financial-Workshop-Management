@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
-    List<Feedback> findByEvent_Id(Long eventId);
-    List<Feedback> findByUserId(Long userId);
+    // List<Feedback> findByEvent_Id(Long eventId);
+    // List<Feedback> findByUserId(Long userId);
 }

@@ -1,16 +1,12 @@
 package com.wecp.financial_seminar_and_workshop_management.entity;
 
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Entity
 @Table(name = "users") // do not change table name
 public class User {
  @Id
@@ -28,7 +24,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Feedback> feedbacks = new HashSet<>();
  
-    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(mappedBy = "professionals", cascade = CascadeType.ALL)
     private List<Event> events = new ArrayList<>();
  
     // Constructors

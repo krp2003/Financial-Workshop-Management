@@ -9,48 +9,48 @@ import com.wecp.financial_seminar_and_workshop_management.service.EventService;
 import com.wecp.financial_seminar_and_workshop_management.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+ 
 @RestController
 @RequestMapping("/api/participant")
+@PreAuthorize("hasAuthority('PARTICIPANT')")
 public class ParticipantController {
  
     @Autowired
-    EventService eventService;
+    private EventService eventService;
  
     @Autowired
-    EnrollmentService enrollmentService;
+    private EnrollmentService enrollmentService;
  
     @Autowired
-    FeedbackService feedbackService;
+    private FeedbackService feedbackService;
  
-    // Get all events
     @GetMapping("/events")
-    public ResponseEntity<List<Event>> getEvents() {
+    public ResponseEntity<List<Event>> getAllEvents() {
         return ResponseEntity.ok(eventService.getAllEvents());
     }
  
-    // Enroll in event
     @PostMapping("/event/{eventId}/enroll")
-    public ResponseEntity<Enrollment> enrollInEvent(@RequestParam Long userId, @PathVariable Long eventId) {
-        return ResponseEntity.ok(enrollmentService.enroll(userId, eventId));
+    public ResponseEntity<Void> enrollInEvent(@PathVariable Long eventId, @RequestParam Long userId) {
+        enrollmentService.enrollInEvent(userId, eventId);
+        return ResponseEntity.ok().build();
     }
  
-    // View event status
-    @GetMapping("/event/{id}/status")
-    public ResponseEntity<Event> viewEventStatus(@PathVariable Long id) {
-        return ResponseEntity.ok(eventService.getEvent(id).orElseThrow());
+    @GetMapping("/event/{eventId}/status")
+    public ResponseEntity<Event> viewEventStatus(@PathVariable Long eventId) {
+        Event event = eventService.getEventById(eventId);
+        return ResponseEntity.ok(event);
     }
  
-    // Provide feedback
     @PostMapping("/event/{eventId}/feedback")
-    public ResponseEntity<Feedback> provideFeedback(@RequestParam Long userId,
-                                                    @PathVariable Long eventId,
-                                                    @RequestBody Feedback feedback) {
-        return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
+    public ResponseEntity<Void> provideFeedback(@PathVariable Long eventId,
+                                                @RequestParam Long userId,
+                                                @RequestBody Feedback feedback) {
+        feedbackService.addFeedback(eventId, userId, feedback);
+        return ResponseEntity.ok().build();
     }
 }
- 
