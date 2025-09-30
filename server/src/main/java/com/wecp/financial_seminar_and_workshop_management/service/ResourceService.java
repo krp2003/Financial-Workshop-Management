@@ -1,5 +1,6 @@
 package com.wecp.financial_seminar_and_workshop_management.service;
 
+
 import com.wecp.financial_seminar_and_workshop_management.entity.Event;
 import com.wecp.financial_seminar_and_workshop_management.entity.Resource;
 import com.wecp.financial_seminar_and_workshop_management.repository.EventRepository;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class ResourceService {
+
     @Autowired
     private EventRepository eventRepository;
 
@@ -23,3 +25,4 @@ public class ResourceService {
         return resourceRepository.save(resource);
     }
 }
+

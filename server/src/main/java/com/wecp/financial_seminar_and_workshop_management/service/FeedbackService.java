@@ -1,5 +1,7 @@
 package com.wecp.financial_seminar_and_workshop_management.service;
 
+
+
 import com.wecp.financial_seminar_and_workshop_management.entity.Event;
 import com.wecp.financial_seminar_and_workshop_management.entity.Feedback;
 import com.wecp.financial_seminar_and_workshop_management.entity.User;
@@ -12,8 +14,10 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class FeedbackService {
+
     @Autowired
     private EventRepository eventRepository;
 

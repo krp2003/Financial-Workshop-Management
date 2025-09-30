@@ -1,5 +1,6 @@
 package com.wecp.financial_seminar_and_workshop_management.service;
 
+
 import com.wecp.financial_seminar_and_workshop_management.entity.Enrollment;
 import com.wecp.financial_seminar_and_workshop_management.entity.Event;
 import com.wecp.financial_seminar_and_workshop_management.entity.User;
@@ -13,9 +14,7 @@ import java.util.List;
 
 @Service
 public class EnrollmentService {
-<<<<<<< Updated upstream
 
-=======
     @Autowired
     private EnrollmentRepository enrollmentRepository;
 
@@ -33,5 +32,4 @@ public class EnrollmentService {
         enrollment.setEvent(event);
         return enrollmentRepository.save(enrollment);
     }
->>>>>>> Stashed changes
 }

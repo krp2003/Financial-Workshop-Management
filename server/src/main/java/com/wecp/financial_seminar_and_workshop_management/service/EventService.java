@@ -1,5 +1,6 @@
 package com.wecp.financial_seminar_and_workshop_management.service;
 
+
 import com.wecp.financial_seminar_and_workshop_management.entity.Event;
 import com.wecp.financial_seminar_and_workshop_management.entity.User;
 import com.wecp.financial_seminar_and_workshop_management.repository.EventRepository;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class EventService {
+
     @Autowired
     private EventRepository eventRepository;
 
@@ -57,3 +59,4 @@ public class EventService {
         return eventRepository.findById(eventId).orElseThrow();
     }
 }
+
